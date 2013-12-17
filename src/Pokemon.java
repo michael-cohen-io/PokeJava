@@ -3,8 +3,9 @@
  *
  */
 import java.io.IOException;
-
+import java.util.ArrayList;
 import org.json.*;
+
 
 public class Pokemon extends ModelClass {
 
@@ -13,8 +14,9 @@ public class Pokemon extends ModelClass {
 	 */
 	
 	//TODO: Change Created, Modified, other special types from String to specific types 
-	private String Name, Created, EVYield, GrowthRate, Height, Modified, URI, Species, Weight;
+	private String Name, Created, EVYield, GrowthRate, Height, MFRatio, Modified, URI, Species, Weight;
 	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, ID, SpAttack, SpDefense, Speed, Total;
+	private ArrayList<Pokemon> evolutions;
 	
 	public Pokemon(int ID){
 		String data = "";
@@ -26,29 +28,44 @@ public class Pokemon extends ModelClass {
 		
 		JSONObject root = parse(data);
 		try {
-		//Define properties
-		Name = root.getString("name");
-		Created = root.getString("created");
-		EVYield =  root.getString("ev_yield");
-		GrowthRate = root.getString("growth_rate");
-		Height =  root.getString("height");
-		Modified = root.getString("modified");
-		URI =  root.getString("resource_uri");
-		Species = root.getString("species");
-		Weight = root.getString("weight");
-		
-		Attack = root.getInt("attack");
-		CatchRate = root.getInt("catch_rate");
-		Defense =  root.getInt("defense");
-		EggCycles = root.getInt("egg_cycles");
-		Exp = root.getInt("exp");
-		Happiness = root.getInt("happiness");
-		HP = root.getInt("hp");
-		this.ID = root.getInt("national_id");
-		SpAttack = root.getInt("sp_atk");
-		SpDefense = root.getInt("sp_def");
-		Speed =  root.getInt("speed");
-		Total =  root.getInt("total");
+			//Define properties
+			Name = root.getString("name");
+			Created = root.getString("created");
+			EVYield =  root.getString("ev_yield");
+			GrowthRate = root.getString("growth_rate");
+			Height =  root.getString("height");
+			MFRatio = root.getString("male_female_ratio");
+			Modified = root.getString("modified");
+			URI =  root.getString("resource_uri");
+			Species = root.getString("species");
+			Weight = root.getString("weight");
+			
+			Attack = root.getInt("attack");
+			CatchRate = root.getInt("catch_rate");
+			Defense =  root.getInt("defense");
+			EggCycles = root.getInt("egg_cycles");
+			Exp = root.getInt("exp");
+			Happiness = root.getInt("happiness");
+			HP = root.getInt("hp");
+			this.ID = root.getInt("national_id");
+			SpAttack = root.getInt("sp_atk");
+			SpDefense = root.getInt("sp_def");
+			Speed =  root.getInt("speed");
+			Total =  root.getInt("total");
+			
+			//To get evolution
+			//TODO: Comments
+			JSONArray evolutionNode = root.getJSONArray("evolutions");
+			evolutions = new ArrayList<Pokemon>();
+				for (int i = 0; i < evolutionNode.length(); i++) {
+					String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
+					evolutionURI = evolutionURI.substring(16);
+					evolutionURI = evolutionURI.replace("/", "");
+					Pokemon evolution = new Pokemon(Integer.parseInt(evolutionURI));
+					evolutions.add(evolution);
+				}
+			if (evolutions.isEmpty()) { evolutions.add(null);}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,6 +77,7 @@ public class Pokemon extends ModelClass {
 	public String getEVYield(){ return EVYield;}
 	public String getGrowthRate(){ return GrowthRate;}
 	public String getHeight(){ return Height;}
+	public String getMFRatio(){ return MFRatio;}
 	public String getModified(){ return Modified;}
 	public String getURI(){ return URI;}
 	public String getSpecies(){ return Species;}
@@ -78,6 +96,7 @@ public class Pokemon extends ModelClass {
 	public int getSpeed(){ return Speed;}
 	public int getTotal(){ return Total;}
 	
+	public ArrayList<Pokemon> getEvolutions(){ return evolutions;}
 	//TODO: Add toString(), printInfo()
 
 }
