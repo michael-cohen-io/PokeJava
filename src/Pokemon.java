@@ -16,7 +16,7 @@ public class Pokemon extends ModelClass {
 	//TODO: Change Created, Modified, other special types from String to specific types 
 	private String Name, Created, EVYield, GrowthRate, Height, MFRatio, Modified, URI, Species, Weight;
 	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, ID, SpAttack, SpDefense, Speed, Total;
-	private ArrayList<Pokemon> evolutions;
+	private ArrayList<Integer> Evolutions;
 	
 	public Pokemon(int ID){
 		String data = "";
@@ -53,18 +53,22 @@ public class Pokemon extends ModelClass {
 			Speed =  root.getInt("speed");
 			Total =  root.getInt("total");
 			
-			//To get evolution
-			//TODO: Comments
+			/*
+			 * Instead of initializing the ArrayList<Pokemon> at every Pokemon constructor, a list of IDs is initialized.
+			 * This is not so much a problem with the Pokemon class as it is in classes such as Type, which would recursively continue initializing infinite Types
+			 * due to the cyclical nature of types and their weaknessess/super-effectiveness
+			 */
+			
+			Evolutions = new ArrayList<Integer>();
 			JSONArray evolutionNode = root.getJSONArray("evolutions");
-			evolutions = new ArrayList<Pokemon>();
 				for (int i = 0; i < evolutionNode.length(); i++) {
 					String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
 					evolutionURI = evolutionURI.substring(16);
 					evolutionURI = evolutionURI.replace("/", "");
-					Pokemon evolution = new Pokemon(Integer.parseInt(evolutionURI));
-					evolutions.add(evolution);
+					
+					Evolutions.add(Integer.parseInt(evolutionURI));
 				}
-			if (evolutions.isEmpty()) { evolutions.add(null);}
+			if (Evolutions.isEmpty()) { Evolutions.add(null);}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,7 +100,16 @@ public class Pokemon extends ModelClass {
 	public int getSpeed(){ return Speed;}
 	public int getTotal(){ return Total;}
 	
-	public ArrayList<Pokemon> getEvolutions(){ return evolutions;}
+	public ArrayList<Pokemon> getEvolutions(){ 
+		ArrayList<Pokemon> evolutionList = new ArrayList<Pokemon>();
+		
+		for (int i = 0; i < Evolutions.size(); i++) {
+			Pokemon p = new Pokemon(Evolutions.get(i));
+			evolutionList.add(p);
+		}
+		if (evolutionList.isEmpty()) { return null; }
+		return evolutionList;
+	}
 	//TODO: Add toString(), printInfo()
 
 }

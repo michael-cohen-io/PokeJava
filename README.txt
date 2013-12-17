@@ -18,8 +18,10 @@ For now this README will be used to track progress.
 		Types
 		
 	
-	TODO for 0.2: Add types, pokemon relationships classes, finish Pokemon class
+	TODO for 0.2: Add types, pokemon relationships classes, finish Pokemon class - Completed
 
-0.2 - Changed JSON parser from quick-json to org.json. Added evolution hierarchy.
-	
+0.2 - Changed JSON parser from quick-json to org.json. Added evolution hierarchy. Added Types & Finished Pokemon Class
+	- Fixed issue with Type class recursively iterating through itself
+	- TODO:
+		- Change the ArrayList returns from being null if empty to giving the user an exception/empty ArrayList
 	
