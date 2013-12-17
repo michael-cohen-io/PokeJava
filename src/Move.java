@@ -50,4 +50,13 @@ public class Move extends ModelClass {
 	public int getPower(){return Power;}
 	public int getAccuracy(){return Accuracy;}
 	public int getPP(){return PP;}
+	
+	public String toString(){
+		String data = "Move: " + Name + "\nID: " + ID;
+		return data;
+	}
+	
+	public void printInfo(){
+		System.out.println(toString());
+	}
 }

@@ -159,4 +159,13 @@ public class Type extends ModelClass {
 		
 		return list;
 	}
+	
+	public String toString(){
+		String data = "Type: " + Name + "\nID: " + ID;
+		return data;
+	}
+	
+	public void printInfo(){
+		System.out.println(toString());
+	}
 }

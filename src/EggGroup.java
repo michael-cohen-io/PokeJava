@@ -67,4 +67,14 @@ public class EggGroup extends ModelClass {
 		
 		return pokemonList;
 	}
+	
+	
+	public String toString(){
+		String data = "Egg Group: " + Name + "\nID: " + ID;
+		return data;
+	}
+	
+	public void printInfo(){
+		System.out.println(toString());
+	}
 }

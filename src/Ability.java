@@ -40,4 +40,13 @@ public class Ability extends ModelClass {
 	public String getDescription(){return Description;}
 	
 	public int getID(){return ID;}
+	
+	public String toString(){
+		String data = "Ability: " + Name + "\nID: " + ID;
+		return data;
+	}
+	
+	public void printInfo(){
+		System.out.println(toString());
+	}
 }
