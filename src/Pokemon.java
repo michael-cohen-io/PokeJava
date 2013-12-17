@@ -61,13 +61,13 @@ public class Pokemon extends ModelClass {
 			
 			Evolutions = new ArrayList<Integer>();
 			JSONArray evolutionNode = root.getJSONArray("evolutions");
-				for (int i = 0; i < evolutionNode.length(); i++) {
-					String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
-					evolutionURI = evolutionURI.substring(16);
-					evolutionURI = evolutionURI.replace("/", "");
-					
-					Evolutions.add(Integer.parseInt(evolutionURI));
-				}
+			for (int i = 0; i < evolutionNode.length(); i++) {
+				String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
+				evolutionURI = evolutionURI.substring(16);
+				evolutionURI = evolutionURI.replace("/", "");
+				
+				Evolutions.add(Integer.parseInt(evolutionURI));
+			}
 			if (Evolutions.isEmpty()) { Evolutions.add(null);}
 			
 		} catch (Exception e) {
