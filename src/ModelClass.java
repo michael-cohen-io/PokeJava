@@ -7,21 +7,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Map;
-import com.json.parsers.JSONParser;
-import com.json.parsers.JsonParserFactory;
+
+import org.json.*;
 
 public abstract class ModelClass {
 	
-	@SuppressWarnings("rawtypes")
-	protected Map parse(String data) {
-		JsonParserFactory factory = JsonParserFactory.getInstance();
-		JSONParser parser = factory.newJsonParser();
-		Map jsonData = parser.parseJson(data);
-		Map root = (Map) jsonData.get("root");
-		
+	
+	protected JSONObject parse(String data) {
+		JSONObject root;
+		try {
+		root = new JSONObject(data);
 		return root;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
+
 	protected String get(String urlAddress) throws IOException {
 		urlAddress = "http://pokeapi.co/api/v1/" + urlAddress;
 		URL url = new URL(urlAddress);
