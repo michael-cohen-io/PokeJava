@@ -66,7 +66,7 @@ public class Type extends ModelClass {
 					
 					Resistance.add(Integer.parseInt(resistanceURI));
 				}
-			//if (Resistance.isEmpty()){ Resistance.add(null);}
+			if (Resistance.isEmpty()){ Resistance.add(null);}
 				
 			//SuperEffective ArrayList defining
 			JSONArray supereffectiveNode = root.getJSONArray("super_effective");
