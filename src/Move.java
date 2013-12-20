@@ -8,8 +8,8 @@ import org.json.JSONObject;
  */
 public class Move extends ModelClass {
 
-	private String Name, URI, Created, Modified, Category, Description;
-	private int ID, Power, Accuracy, PP;
+	private String Category, Description;
+	private int Power, Accuracy, PP;
 	
 	public Move(int ID){
 		String data = "";
@@ -39,14 +39,10 @@ public class Move extends ModelClass {
 		}
 	}
 	
-	public String getName(){ return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
+	
 	public String getCategory(){return Category;}
 	public String getDescription(){return Description;}
 	
-	public int getID(){return ID;}
 	public int getPower(){return Power;}
 	public int getAccuracy(){return Accuracy;}
 	public int getPP(){return PP;}

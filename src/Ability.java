@@ -7,8 +7,7 @@ import org.json.JSONObject;
  *
  */
 public class Ability extends ModelClass {
-	private String Name, URI, Created, Modified, Description; 
-	private int ID;
+	private String Description; 
 	
 	public Ability(int ID){
 		String data = "";
@@ -33,13 +32,8 @@ public class Ability extends ModelClass {
 		}
 	}
 	
-	public String getName() {return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
+
 	public String getDescription(){return Description;}
-	
-	public int getID(){return ID;}
 	
 	public String toString(){
 		String data = "Ability: " + Name + "\nID: " + ID;

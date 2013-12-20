@@ -12,6 +12,9 @@ import org.json.*;
 
 public abstract class ModelClass {
 	
+	public String Name, URI, Created, Modified;
+	public int ID;
+	
 	
 	protected JSONObject parse(String data) {
 		JSONObject root;
@@ -46,4 +49,11 @@ public abstract class ModelClass {
 		
 		return sb.toString();
 	}
+	
+	public String getName(){ return Name;}
+	public String getURI(){ return URI;}
+	public String getCreated(){return Created;}
+	public String getModified(){return Modified;}
+	
+	public int getID(){return ID;}
 }

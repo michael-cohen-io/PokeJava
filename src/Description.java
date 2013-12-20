@@ -10,8 +10,6 @@ import org.json.JSONObject;
  */
 public class Description extends ModelClass {
 	
-	private String Name, URI, Created, Modified;
-	private int ID;
 	private ArrayList<Integer> Games;
 	private Pokemon pokemon;
 	
@@ -55,12 +53,6 @@ public class Description extends ModelClass {
 		}
 	}
 	
-	public String getName(){ return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
-	
-	public int getID(){return ID;}
 	
 	public Pokemon getPokemon(){return pokemon;}
 	

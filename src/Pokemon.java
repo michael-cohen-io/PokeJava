@@ -15,8 +15,8 @@ public class Pokemon extends ModelClass {
 	 */
 	
 	//TODO: Change Created, Modified, other special types from String to specific types 
-	private String Name, Created, EVYield, GrowthRate, Height, MFRatio, Modified, URI, Species, Weight;
-	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, ID, SpAttack, SpDefense, Speed, Total;
+	private String EVYield, GrowthRate, Height, MFRatio, Species, Weight;
+	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, SpAttack, SpDefense, Speed, Total;
 	private ArrayList<Integer> Abilities, Evolutions, EggGroups, Moves, Types;
 	
 	
@@ -131,14 +131,11 @@ public class Pokemon extends ModelClass {
 		
 	}
 	
-	public String getName(){ return Name;}
-	public String getCreated() { return Created;}
+
 	public String getEVYield(){ return EVYield;}
 	public String getGrowthRate(){ return GrowthRate;}
 	public String getHeight(){ return Height;}
 	public String getMFRatio(){ return MFRatio;}
-	public String getModified(){ return Modified;}
-	public String getURI(){ return URI;}
 	public String getSpecies(){ return Species;}
 	public String getWeight(){ return Weight;}
 	
@@ -149,7 +146,6 @@ public class Pokemon extends ModelClass {
 	public int getExp(){ return Exp;}
 	public int getHappiness(){ return Happiness;}
 	public int getHP(){ return HP;}
-	public int getID(){ return ID;}
 	public int getSpAttack(){ return SpAttack;}
 	public int getSpDefense(){ return SpDefense;}
 	public int getSpeed(){ return Speed;}

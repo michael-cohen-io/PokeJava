@@ -10,8 +10,7 @@ import org.json.JSONObject;
  *
  */
 public class Type extends ModelClass {
-	private String Name, URI, Created, Modified;
-	private int ID;
+	
 	private ArrayList<Integer> Ineffective, NoEffect, Resistance, SuperEffective, Weakness;
 	
 	public Type(int ID) {
@@ -97,12 +96,7 @@ public class Type extends ModelClass {
 		}
 	}
 	
-	public String getName(){ return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
-	
-	public int getID(){return ID;}
+
 	
 	public ArrayList<Type> getIneffective(){
 		ArrayList<Type> list = new ArrayList<Type>();

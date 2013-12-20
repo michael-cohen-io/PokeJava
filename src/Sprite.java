@@ -8,8 +8,7 @@ import org.json.JSONObject;
  */
 public class Sprite extends ModelClass {
 
-	private String Name, URI, Created, Modified, Image;
-	private int ID;
+	private String Image;
 	private Pokemon pokemon;
 	
 	public Sprite(int ID){
@@ -41,14 +40,9 @@ public class Sprite extends ModelClass {
 		}
 	}
 	
-	
-	public String getName(){ return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
+
 	public String getImage(){return Image;}
 	
-	public int getID(){return ID;}
 	
 	public Pokemon getPokemon(){return pokemon;}
 }

@@ -8,8 +8,7 @@ import org.json.JSONObject;
  */
 public class Game extends ModelClass {
 
-	private String Name, URI, Created, Modified;
-	private int ID, Generation, ReleaseYear;
+	private int Generation, ReleaseYear;
 	
 	public Game(int ID){
 		String data = "";
@@ -35,12 +34,6 @@ public class Game extends ModelClass {
 		}
 	}
 	
-	public String getName(){ return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
-	
-	public int getID(){return ID;}
 	public int getGeneration(){return Generation;}
 	public int getReleaseYear(){return ReleaseYear;}
 }

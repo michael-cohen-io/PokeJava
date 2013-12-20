@@ -10,7 +10,7 @@ import org.json.JSONObject;
  */
 public class Pokedex extends ModelClass {
 	
-	private String Name, URI, Created, Modified;
+
 	private ArrayList<Integer> Pokemons;
 	
 	public Pokedex(){
@@ -46,10 +46,6 @@ public class Pokedex extends ModelClass {
 		}
 	}
 	
-	public String getName(){ return Name;}
-	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
 	
 	public ArrayList<Pokemon> getPokemons(){
 		ArrayList<Pokemon> list = new ArrayList<Pokemon>();

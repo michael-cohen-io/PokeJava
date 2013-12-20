@@ -40,6 +40,6 @@ For now this README will be used to track progress.
 	TODO:
 		- Change the ArrayList returns from being null if empty to giving the user an exception/empty ArrayList
 		- Implement Types and Abilities in Pokemon Class - Completed
-		- Move Name, Created, Modified, etc. to ModelClass. Run super() instead in subclasses
-			- Move accessor methods to ModelClass as well
+		- Move Name, Created, Modified, etc. to ModelClass. - Completed
+			- Move accessor methods to ModelClass as well - Completed
 		

@@ -9,8 +9,7 @@ import org.json.JSONObject;
  *
  */
 public class EggGroup extends ModelClass {
-	private String Name, URI, Created, Modified;
-	private int ID;
+
 	private ArrayList<Integer> Pokemon;
 	
 	public EggGroup(int ID) {
@@ -49,12 +48,6 @@ public class EggGroup extends ModelClass {
 		}	
 	}
 	
-	public String getName() { return Name;}
-	public String getURI(){return URI;}
-	public String getCreated() { return Created;}
-	public String getModified(){ return Modified;}
-	
-	public int getID(){ return ID;}
 	
 	public ArrayList<Pokemon> getPokemon(){
 		ArrayList<Pokemon> pokemonList = new ArrayList<Pokemon>();
