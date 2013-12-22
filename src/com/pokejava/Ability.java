@@ -1,5 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
 
 import org.json.JSONObject;
 
@@ -12,11 +11,7 @@ public class Ability extends ModelClass {
 	
 	public Ability(int ID){
 		String data = "";
-		try {
-			data = get("ability/"+ID);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		data = get("ability/"+ID);
 		
 		JSONObject root = parse(data);
 		try {

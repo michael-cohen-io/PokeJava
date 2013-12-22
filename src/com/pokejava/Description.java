@@ -1,5 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -17,11 +16,7 @@ public class Description extends ModelClass {
 	public Description(int ID){
 		String data = "";
 		
-		try {
-			data = get("description/"+ID);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		data = get("description/"+ID);
 		
 		JSONObject root = parse(data);
 		try {

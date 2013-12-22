@@ -1,5 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -17,11 +16,7 @@ public class Pokedex extends ModelClass {
 	public Pokedex(){
 		String data = "";
 		
-		try {
-			data = get("pokedex/1"); //Only one pokedex available; no ID necesarry
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		data = get("pokedex/1"); //Only one pokedex available; no ID necesarry
 		
 		JSONObject root = parse(data);
 		try {

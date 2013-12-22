@@ -1,6 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
-
 import org.json.JSONObject;
 
 /**
@@ -14,11 +12,7 @@ public class Game extends ModelClass {
 	public Game(int ID){
 		String data = "";
 		
-		try {
-			data = get("game/"+ID);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		data = get("game/"+ID);
 		
 		JSONObject root = parse(data);
 		try {
