@@ -1,4 +1,6 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
+
 import org.json.JSONObject;
 
 /**
@@ -20,8 +22,6 @@ public class Move extends ModelClass {
 			//Define Properties
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
 			Category = root.getString("category");
 			Description = root.getString("description");
 			this.LearnType = LearnType;
@@ -30,6 +30,10 @@ public class Move extends ModelClass {
 			Power = root.getInt("power");
 			Accuracy = root.getInt("accuracy");
 			PP = root.getInt("pp");
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,4 +1,6 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
+
 import org.json.JSONObject;
 
 /**
@@ -19,11 +21,12 @@ public class Sprite extends ModelClass {
 		try {
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
 			Image = root.getString("image");
 			
 			this.ID = root.getInt("id");
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
 			
 			String pokemonURI = root.getJSONObject("pokemon").getString("resource_uri");
 			pokemonURI = pokemonURI.substring(16);

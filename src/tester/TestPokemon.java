@@ -2,13 +2,19 @@ package tester;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.pokejava.*;
 
+@SuppressWarnings("unused")
 public class TestPokemon {
 
 	public static void main(String[] args){
-		System.out.println(pokemonCheck(65));
+		Pokemon p = new Pokemon(7);
+		
+		Date d = p.getCreated();
+		
+		System.out.println(d.toString());
 	}
 	
 	
@@ -16,6 +22,7 @@ public class TestPokemon {
 	
 	//All Pokemon Tests
 	
+
 	private static long getAllPokemonTime(){
 		long sTime = System.nanoTime();
 		for (int i = 1; i <= 718; i++){
@@ -135,12 +142,10 @@ public class TestPokemon {
 		//Test Basic Properties
 	private static boolean isPokemonBasics(int ID){
 		Pokemon p = new Pokemon(ID);
-		String n = p.getCreated();
-		n = p.getEVYield();
+		String n = p.getEVYield();
 		n = p.getGrowthRate();
 		n = p.getHeight();
 		n = p.getMFRatio();
-		n = p.getModified();
 		n = p.getSpecies();
 		n = p.getURI();
 		n = p.getWeight();
@@ -157,6 +162,9 @@ public class TestPokemon {
 		i = p.getSpDefense();
 		i = p.getSpeed();
 		i = p.getTotal();
+		
+		Date d = p.getCreated();
+		d = p.getModified();
 		
 		return true;
 		

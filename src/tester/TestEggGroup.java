@@ -4,6 +4,7 @@
 package tester;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.pokejava.EggGroup;
 import com.pokejava.Pokemon;
@@ -12,13 +13,16 @@ import com.pokejava.Pokemon;
  * @author Michael
  *
  */
+@SuppressWarnings("unused")
 public class TestEggGroup {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(eggCheck(6));
+		EggGroup e = new EggGroup(5);
+		Date d = e.getCreated();
+		System.out.println(d.toString());
 	}
 	
 	// ** LONG TESTS **
@@ -97,11 +101,12 @@ public class TestEggGroup {
 	private static boolean isEggBasics(int ID){
 		EggGroup g = new EggGroup(ID);
 		String n = g.getName();
-		n = g.getCreated();
-		n = g.getModified();
 		n = g.getURI();
 		
 		int i = g.getID();
+		
+		Date d = g.getCreated();
+		d = g.getModified();
 		
 		return true;
 	}

@@ -1,5 +1,7 @@
 package com.pokejava;
 
+import java.text.SimpleDateFormat;
+
 import org.json.JSONObject;
 
 /**
@@ -18,11 +20,13 @@ public class Ability extends ModelClass {
 			//Define Properties
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
 			Description = root.getString("description");
 			
 			this.ID = root.getInt("id");
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

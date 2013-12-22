@@ -4,14 +4,19 @@ package com.pokejava;
  *
  */
 
+import java.util.Date;
+
 import org.apache.http.client.fluent.Request;
 import org.json.*;
 
+
+
 public abstract class ModelClass {
 	
-	protected String Name, URI, Created, Modified;
+	protected String Name, URI;
 	protected int ID;
-
+	protected Date Created, Modified;
+	
 	
 	protected JSONObject parse(String data) {
 		JSONObject root;
@@ -38,8 +43,8 @@ public abstract class ModelClass {
 	
 	public String getName(){ return Name;}
 	public String getURI(){ return URI;}
-	public String getCreated(){return Created;}
-	public String getModified(){return Modified;}
+	public Date getModified(){return Modified;}
+	public Date getCreated(){ return Created;}
 	
 	public int getID(){return ID;}
 	

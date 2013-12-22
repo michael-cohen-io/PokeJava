@@ -1,13 +1,18 @@
 package tester;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.pokejava.Type;
 
+@SuppressWarnings("unused")
 public class TestType {
 	
 	public static void main(String[] args) {
-		System.out.println(allTypeCheck());
+
+		Type t = new Type(7);
+		Date d = t.getCreated();
+		System.out.println(d.toString());
 
 	}
 
@@ -144,11 +149,12 @@ public class TestType {
 	private static boolean isTypeBasics(int ID){
 		Type t = new Type(ID);
 		
-		String s = t.getCreated();
-		s = t.getModified();
-		s = t.getURI();
+		String s = t.getURI();
 		
 		int i = t.getID();
+		
+		Date d = t.getCreated();
+		d = t.getModified();
 		
 		return true;
 	}

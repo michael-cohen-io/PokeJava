@@ -1,4 +1,5 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -22,8 +23,10 @@ public class Pokedex extends ModelClass {
 		try {
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
+
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
 			
 			//Pokemon ArrayList defining
 			JSONArray pokemonNode = root.getJSONArray("pokemon");
@@ -35,7 +38,6 @@ public class Pokedex extends ModelClass {
 					
 					Pokemons.add(Integer.parseInt(pokemonURI));
 				}
-			if (Pokemons.isEmpty()){ Pokemons.add(null);}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,5 +55,10 @@ public class Pokedex extends ModelClass {
 		if (list.isEmpty()) { return null;}
 		
 		return list;
+	}
+	
+	public boolean hasPokemon(){
+		if (!Pokemons.isEmpty()) return true;
+		else return false;
 	}
 }

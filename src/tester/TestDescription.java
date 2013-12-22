@@ -1,16 +1,20 @@
 package tester;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.pokejava.Description;
 import com.pokejava.Game;
 import com.pokejava.Pokemon;
 
+@SuppressWarnings("unused")
 public class TestDescription {
 
 	public static void main(String[] args) {
 		
-		System.out.println(descriptionCheck(1));
+		Description s = new Description(1);
+		Date d = s.getModified();
+		System.out.println(d.toString());
 		
 	}
 

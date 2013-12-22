@@ -1,4 +1,5 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -22,10 +23,11 @@ public class Description extends ModelClass {
 		try {
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
 			
 			this.ID = root.getInt("id");
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
 			
 			String pokemonURI = root.getJSONObject("pokemon").getString("resource_uri");
 			pokemonURI = pokemonURI.substring(16);
@@ -42,7 +44,6 @@ public class Description extends ModelClass {
 				
 				Games.add(Integer.parseInt(gameURI));
 			}
-			if(Games.isEmpty()){ Games.add(null);}
 			
 			
 		} catch (Exception e){
@@ -63,6 +64,11 @@ public class Description extends ModelClass {
 		if(list.isEmpty()) { return null;}
 		
 		return list;
+	}
+	
+	public boolean hasGames(){
+		if (!Games.isEmpty()) return true;
+		else return false;
 	}
 	
 }

@@ -1,4 +1,5 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -22,10 +23,11 @@ public class Type extends ModelClass {
 			//Define properties
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
 			
 			this.ID = root.getInt("id");
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
 			
 			//Ineffective ArrayList defining
 			JSONArray ineffectiveNode = root.getJSONArray("ineffective");

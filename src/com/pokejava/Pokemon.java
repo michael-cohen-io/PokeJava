@@ -1,4 +1,5 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.json.*;
@@ -31,12 +32,11 @@ public class Pokemon extends ModelClass {
 			try {
 				//Define properties
 				Name = root.getString("name");
-				Created = root.getString("created");
+				
 				EVYield =  root.getString("ev_yield");
 				GrowthRate = root.getString("growth_rate");
 				Height =  root.getString("height");
 				MFRatio = root.getString("male_female_ratio");
-				Modified = root.getString("modified");
 				URI =  root.getString("resource_uri");
 				Species = root.getString("species");
 				Weight = root.getString("weight");
@@ -54,6 +54,8 @@ public class Pokemon extends ModelClass {
 				Speed =  root.getInt("speed");
 				Total =  root.getInt("total");
 				
+				Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+				Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
 				
 				/*
 				 * Instead of initializing the ArrayList<Pokemon> at every Pokemon constructor, a list of IDs is initialized.

@@ -1,4 +1,6 @@
 package com.pokejava;
+import java.text.SimpleDateFormat;
+
 import org.json.JSONObject;
 
 /**
@@ -18,12 +20,13 @@ public class Game extends ModelClass {
 		try {
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
-			Created = root.getString("created");
-			Modified = root.getString("modified");
 			
 			this.ID = root.getInt("id");
 			Generation = root.getInt("generation");
 			ReleaseYear = root.getInt("release_year");
+			
+			Created = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("created").substring(0, 19));
+			Modified = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(root.getString("modified").substring(0, 19));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
