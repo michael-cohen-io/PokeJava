@@ -67,6 +67,8 @@ public class TestPokemon {
 		return true;
 	}
 	
+	
+		//CHECK ALL
 	private static boolean allPokemonCheck(){
 		if (isAllPokemonName() && isAllPokemonAbility() && isAllPokemonEggGroup() && isAllPokemonEvolutions() && isAllPokemonTypes()){
 			return true;
@@ -80,7 +82,7 @@ public class TestPokemon {
 	
 	// ** QUICK TESTS **
 	
-	//Single Pokemon tests
+	//Single Pokemon Tests
 	
 	private static long getPokemonTime(int ID){
 		long sTime = System.nanoTime();
@@ -120,6 +122,7 @@ public class TestPokemon {
 		return true;
 	}
 	
+		//CHECK ALL
 	private static boolean pokemonCheck(int ID){
 		if (isPokemonName(ID) && isPokemonAbility(ID) && isPokemonEggGroup(ID) && isPokemonEvolutions(ID) && isPokemonTypes(ID)) {
 			return true;
@@ -128,5 +131,35 @@ public class TestPokemon {
 		}
 	}
 	
+	
+		//Test Basic Properties
+	private static boolean isPokemonBasics(int ID){
+		Pokemon p = new Pokemon(ID);
+		String n = p.getCreated();
+		n = p.getEVYield();
+		n = p.getGrowthRate();
+		n = p.getHeight();
+		n = p.getMFRatio();
+		n = p.getModified();
+		n = p.getSpecies();
+		n = p.getURI();
+		n = p.getWeight();
+		
+		int i = p.getAttack();
+		i = p.getCatchRate();
+		i = p.getDefense();
+		i = p.getEggCycle();
+		i = p.getExp();
+		i = p.getHappiness();
+		i = p.getHP();
+		i = p.getID();
+		i = p.getSpAttack();
+		i = p.getSpDefense();
+		i = p.getSpeed();
+		i = p.getTotal();
+		
+		return true;
+		
+	}
 	
 }
