@@ -1,6 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
-
 import org.json.JSONObject;
 
 /**
@@ -15,11 +13,7 @@ public class Move extends ModelClass {
 	public Move(int ID, String LearnType){
 		String data = "";
 		
-		try {
-			data = get("move/"+ID);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		data = get("move/"+ID);
 		
 		JSONObject root = parse(data);
 		try {

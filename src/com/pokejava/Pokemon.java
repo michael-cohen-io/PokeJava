@@ -1,9 +1,4 @@
 package com.pokejava;
-/**
- * @author Michael Cohen
- *
- */
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.*;
@@ -24,120 +19,122 @@ public class Pokemon extends ModelClass {
 	private ArrayList<String> LearnTypes; //For moves class
 	
 	public Pokemon(int ID){
-		String data = "";
-		try {
-			data = get("pokemon/"+ID);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
-		JSONObject root = parse(data);
-		try {
-			//Define properties
-			Name = root.getString("name");
-			Created = root.getString("created");
-			EVYield =  root.getString("ev_yield");
-			GrowthRate = root.getString("growth_rate");
-			Height =  root.getString("height");
-			MFRatio = root.getString("male_female_ratio");
-			Modified = root.getString("modified");
-			URI =  root.getString("resource_uri");
-			Species = root.getString("species");
-			Weight = root.getString("weight");
-			
-			Attack = root.getInt("attack");
-			CatchRate = root.getInt("catch_rate");
-			Defense =  root.getInt("defense");
-			EggCycles = root.getInt("egg_cycles");
-			Exp = root.getInt("exp");
-			Happiness = root.getInt("happiness");
-			HP = root.getInt("hp");
-			this.ID = root.getInt("national_id");
-			SpAttack = root.getInt("sp_atk");
-			SpDefense = root.getInt("sp_def");
-			Speed =  root.getInt("speed");
-			Total =  root.getInt("total");
-			
-			
-			/*
-			 * Instead of initializing the ArrayList<Pokemon> at every Pokemon constructor, a list of IDs is initialized.
-			 * This is not so much a problem with the Pokemon class as it is in classes such as Type, which would recursively continue initializing infinite Types
-			 * due to the cyclical nature of types and their weaknessess/super-effectiveness
-			 */
-			
-			//Abilities ArrayList Defining
-			Abilities = new ArrayList<Integer>();
-			JSONArray abilityNode = root.getJSONArray("abilities");
-			for (int i = 0; i < abilityNode.length(); i++) {
-				String abilityURI = abilityNode.getJSONObject(i).getString("resource_uri");
-				abilityURI = abilityURI.substring(16);
-				abilityURI = abilityURI.replace("/", "");
-				
-				Abilities.add(Integer.parseInt(abilityURI));
+			String data = "";
+			try {
+				data = get("pokemon/"+ID);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			if (Abilities.isEmpty()) { Abilities.add(null);}
 			
-			//Evolutions ArrayList Defining
-			Evolutions = new ArrayList<Integer>();
-			JSONArray evolutionNode = root.getJSONArray("evolutions");
-			for (int i = 0; i < evolutionNode.length(); i++) {
-				String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
-				evolutionURI = evolutionURI.substring(16);
-				evolutionURI = evolutionURI.replace("/", "");
+			JSONObject root = parse(data);
+			try {
+				//Define properties
+				Name = root.getString("name");
+				Created = root.getString("created");
+				EVYield =  root.getString("ev_yield");
+				GrowthRate = root.getString("growth_rate");
+				Height =  root.getString("height");
+				MFRatio = root.getString("male_female_ratio");
+				Modified = root.getString("modified");
+				URI =  root.getString("resource_uri");
+				Species = root.getString("species");
+				Weight = root.getString("weight");
+				
+				Attack = root.getInt("attack");
+				CatchRate = root.getInt("catch_rate");
+				Defense =  root.getInt("defense");
+				EggCycles = root.getInt("egg_cycles");
+				Exp = root.getInt("exp");
+				Happiness = root.getInt("happiness");
+				HP = root.getInt("hp");
+				this.ID = root.getInt("national_id");
+				SpAttack = root.getInt("sp_atk");
+				SpDefense = root.getInt("sp_def");
+				Speed =  root.getInt("speed");
+				Total =  root.getInt("total");
+				
 				
 				/*
-				if (evolutionNode.getJSONObject(i).getString("method").equals("level_up")) {EvolvesAt = evolutionNode.getJSONObject(i).getInt("level");}
+				 * Instead of initializing the ArrayList<Pokemon> at every Pokemon constructor, a list of IDs is initialized.
+				 * This is not so much a problem with the Pokemon class as it is in classes such as Type, which would recursively continue initializing infinite Types
+				 * due to the cyclical nature of types and their weaknessess/super-effectiveness
+				 */
 				
-				left out until level is fully implemented for all evolutions
-				*/
-				Evolutions.add(Integer.parseInt(evolutionURI));
-			}
-			if (Evolutions.isEmpty()) { Evolutions.add(null);}
-			
-			
-			//EggGroups ArrayList Defining
-			EggGroups = new ArrayList<Integer>();
-			JSONArray eggNode = root.getJSONArray("egg_groups");
-			for (int i = 0; i < eggNode.length(); i++) {
-				String eggURI = eggNode.getJSONObject(i).getString("resource_uri");
-				eggURI = eggURI.substring(12);
-				eggURI = eggURI.replace("/", "");
+				//Abilities ArrayList Defining
+				Abilities = new ArrayList<Integer>();
+				JSONArray abilityNode = root.getJSONArray("abilities");
+				for (int i = 0; i < abilityNode.length(); i++) {
+					String abilityURI = abilityNode.getJSONObject(i).getString("resource_uri");
+					abilityURI = abilityURI.substring(16);
+					abilityURI = abilityURI.replace("/", "");
+					
+					Abilities.add(Integer.parseInt(abilityURI));
+				}
+				if (Abilities.isEmpty()) { Abilities.add(null);}
 				
-				EggGroups.add(Integer.parseInt(eggURI));
-			}
-			if (EggGroups.isEmpty()) { EggGroups.add(null);}
-			
-			//Moves ArrayList Defining
-			Moves = new ArrayList<Integer>();
-			LearnTypes = new ArrayList<String>();
-			JSONArray moveNode = root.getJSONArray("moves");
-			for (int i = 0; i < moveNode.length(); i++) {
-				String moveURI = moveNode.getJSONObject(i).getString("resource_uri");
-				moveURI = moveURI.substring(13);
-				moveURI = moveURI.replace("/", "");
-				LearnTypes.add(moveNode.getJSONObject(i).getString("learn_type"));
+				//Evolutions ArrayList Defining
+				Evolutions = new ArrayList<Integer>();
+				JSONArray evolutionNode = root.getJSONArray("evolutions");
+				for (int i = 0; i < evolutionNode.length(); i++) {
+					String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
+					evolutionURI = evolutionURI.substring(16);
+					evolutionURI = evolutionURI.replace("/", "");
+					
+					/*
+					if (evolutionNode.getJSONObject(i).getString("method").equals("level_up")) {EvolvesAt = evolutionNode.getJSONObject(i).getInt("level");}
+					
+					left out until level is fully implemented for all evolutions
+					*/
+					Evolutions.add(Integer.parseInt(evolutionURI));
+				}
+				if (Evolutions.isEmpty()) { Evolutions.add(null);}
 				
-				Moves.add(Integer.parseInt(moveURI));
-			}
-			if (Moves.isEmpty()) { Moves.add(null);}
-			
-			//Types ArrayList Defining
-			Types = new ArrayList<Integer>();
-			JSONArray typeNode = root.getJSONArray("types");
-			for (int i = 0; i < typeNode.length(); i++) {
-				String typesURI = typeNode.getJSONObject(i).getString("resource_uri");
-				typesURI = typesURI.substring(13);
-				typesURI = typesURI.replace("/", "");
 				
-				Types.add(Integer.parseInt(typesURI));
+				//EggGroups ArrayList Defining
+				EggGroups = new ArrayList<Integer>();
+				JSONArray eggNode = root.getJSONArray("egg_groups");
+				for (int i = 0; i < eggNode.length(); i++) {
+					String eggURI = eggNode.getJSONObject(i).getString("resource_uri");
+					eggURI = eggURI.substring(12);
+					eggURI = eggURI.replace("/", "");
+					
+					EggGroups.add(Integer.parseInt(eggURI));
+				}
+				if (EggGroups.isEmpty()) { EggGroups.add(null);}
+				
+				//Moves ArrayList Defining
+				Moves = new ArrayList<Integer>();
+				LearnTypes = new ArrayList<String>();
+				JSONArray moveNode = root.getJSONArray("moves");
+				for (int i = 0; i < moveNode.length(); i++) {
+					String moveURI = moveNode.getJSONObject(i).getString("resource_uri");
+					moveURI = moveURI.substring(13);
+					moveURI = moveURI.replace("/", "");
+					LearnTypes.add(moveNode.getJSONObject(i).getString("learn_type"));
+					
+					Moves.add(Integer.parseInt(moveURI));
+				}
+				if (Moves.isEmpty()) { Moves.add(null);}
+				
+				//Types ArrayList Defining
+				Types = new ArrayList<Integer>();
+				JSONArray typeNode = root.getJSONArray("types");
+				for (int i = 0; i < typeNode.length(); i++) {
+					String typesURI = typeNode.getJSONObject(i).getString("resource_uri");
+					typesURI = typesURI.substring(13);
+					typesURI = typesURI.replace("/", "");
+					
+					Types.add(Integer.parseInt(typesURI));
+				}
+				if (Types.isEmpty()) { Types.add(null);}
+				
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			if (Types.isEmpty()) { Types.add(null);}
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 	}
 	

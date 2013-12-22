@@ -1,5 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -16,11 +15,7 @@ public class EggGroup extends ModelClass {
 	public EggGroup(int ID) {
 		
 		String data = "";
-		try {
-			data = get("egg/"+ID);
-		} catch (IOException e){
-			e.printStackTrace();
-		}
+		data = get("egg/"+ID);
 		
 		JSONObject root = parse(data);
 		

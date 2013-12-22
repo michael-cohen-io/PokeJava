@@ -1,6 +1,4 @@
 package com.pokejava;
-import java.io.IOException;
-
 import org.json.JSONObject;
 
 /**
@@ -15,11 +13,7 @@ public class Sprite extends ModelClass {
 	public Sprite(int ID){
 		String data = "";
 		
-		try {
-			data = get("sprite/"+ID);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		data = get("sprite/"+ID);
 		
 		JSONObject root = parse(data);
 		try {
