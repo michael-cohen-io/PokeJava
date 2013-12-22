@@ -88,7 +88,6 @@ public class Pokemon extends ModelClass {
 					*/
 					Evolutions.add(Integer.parseInt(evolutionURI));
 				}
-				if (Evolutions.isEmpty()) { Evolutions.add(null);}
 				
 				
 				//EggGroups ArrayList Defining
@@ -101,7 +100,6 @@ public class Pokemon extends ModelClass {
 					
 					EggGroups.add(Integer.parseInt(eggURI));
 				}
-				if (EggGroups.isEmpty()) { EggGroups.add(null);}
 				
 				//Moves ArrayList Defining
 				Moves = new ArrayList<Integer>();
@@ -115,7 +113,6 @@ public class Pokemon extends ModelClass {
 					
 					Moves.add(Integer.parseInt(moveURI));
 				}
-				if (Moves.isEmpty()) { Moves.add(null);}
 				
 				//Types ArrayList Defining
 				Types = new ArrayList<Integer>();
@@ -127,7 +124,6 @@ public class Pokemon extends ModelClass {
 					
 					Types.add(Integer.parseInt(typesURI));
 				}
-				if (Types.isEmpty()) { Types.add(null);}
 				
 				
 				
@@ -160,56 +156,66 @@ public class Pokemon extends ModelClass {
 	
 	public ArrayList<Ability> getAbilities(){ 
 		ArrayList<Ability> abilityList = new ArrayList<Ability>();
-		
-		for (int i = 0; i < Abilities.size(); i++) {
-			Ability a = new Ability(Abilities.get(i));
-			abilityList.add(a);
+		if(!Abilities.isEmpty()){
+			for (int i = 0; i < Abilities.size(); i++) {
+				Ability a = new Ability(Abilities.get(i));
+				abilityList.add(a);
+			}
 		}
-		if (abilityList.isEmpty()) { return null; }
+		else { return null; }
 		return abilityList;
 	}
 	
 	public ArrayList<Pokemon> getEvolutions(){ 
 		ArrayList<Pokemon> evolutionList = new ArrayList<Pokemon>();
 		
-		for (int i = 0; i < Evolutions.size(); i++) {
-			Pokemon p = new Pokemon(Evolutions.get(i));
-			evolutionList.add(p);
+		if (!Evolutions.isEmpty()) {
+			for (int i = 0; i < Evolutions.size(); i++) {
+				Pokemon p = new Pokemon(Evolutions.get(i));
+				evolutionList.add(p);
+			}
 		}
-		if (evolutionList.isEmpty()) { return null; }
+		else { return null; }
 		return evolutionList;
 	}
 	
 	public ArrayList<EggGroup> getEggGroup(){ 
 		ArrayList<EggGroup> eggList = new ArrayList<EggGroup>();
 		
-		for (int i = 0; i < EggGroups.size(); i++) {
-			EggGroup e = new EggGroup(EggGroups.get(i));
-			eggList.add(e);
+		if (!EggGroups.isEmpty()) {
+			for (int i = 0; i < EggGroups.size(); i++) {
+				EggGroup e = new EggGroup(EggGroups.get(i));
+				eggList.add(e);
+			}
 		}
-		if (eggList.isEmpty()) { return null; }
+		else { return null; }
 		return eggList;
 	}
 	
 	public ArrayList<Move> getMoves(){ 
 		ArrayList<Move> moveList = new ArrayList<Move>();
 		
-		for (int i = 0; i < Moves.size(); i++) {
-			Move m = new Move(Moves.get(i), LearnTypes.get(i));
-			moveList.add(m);
+		if (!Moves.isEmpty()) {	
+			for (int i = 0; i < Moves.size(); i++) {
+				Move m = new Move(Moves.get(i), LearnTypes.get(i));
+				moveList.add(m);
+			}
 		}
-		if (moveList.isEmpty()) { return null; }
+		else { return null; }
 		return moveList;
 	}
 	
 	public ArrayList<Type> getTypes(){ 
 		ArrayList<Type> typeList = new ArrayList<Type>();
 		
-		for (int i = 0; i < Types.size(); i++) {
-			Type t = new Type(Types.get(i));
-			typeList.add(t);
+		if (!Types.isEmpty()){
+			for (int i = 0; i < Types.size(); i++) {
+				Type t = new Type(Types.get(i));
+				typeList.add(t);
+			}
 		}
-		if (typeList.isEmpty()) { return null; }
+		else { return null; }
+		
 		return typeList;
 	}
 
