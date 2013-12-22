@@ -37,7 +37,6 @@ public class Type extends ModelClass {
 					
 					Ineffective.add(Integer.parseInt(ineffectiveURI));
 				}
-			if (Ineffective.isEmpty()) { Ineffective.add(null);}
 			
 			//NoEffect ArrayList defining
 			JSONArray noeffectNode = root.getJSONArray("no_effect");
@@ -49,7 +48,6 @@ public class Type extends ModelClass {
 					
 					NoEffect.add(Integer.parseInt(noeffectURI));
 				}
-			if (NoEffect.isEmpty()){ NoEffect.add(null);}
 			
 			//Resistance ArrayList defining
 			JSONArray resistanceNode = root.getJSONArray("resistance");
@@ -61,7 +59,6 @@ public class Type extends ModelClass {
 					
 					Resistance.add(Integer.parseInt(resistanceURI));
 				}
-			if (Resistance.isEmpty()){ Resistance.add(null);}
 				
 			//SuperEffective ArrayList defining
 			JSONArray supereffectiveNode = root.getJSONArray("super_effective");
@@ -73,7 +70,6 @@ public class Type extends ModelClass {
 					
 					SuperEffective.add(Integer.parseInt(supereffectiveURI));
 				}
-			if (SuperEffective.isEmpty()){ SuperEffective.add(null); }
 				
 			//Weakness ArrayList defining
 			JSONArray weaknessNode = root.getJSONArray("weakness");
@@ -85,7 +81,6 @@ public class Type extends ModelClass {
 					
 					Weakness.add(Integer.parseInt(weaknessURI));
 				}
-			if (Weakness.isEmpty()) { Weakness.add(null);}
 				
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,11 +92,13 @@ public class Type extends ModelClass {
 	public ArrayList<Type> getIneffective(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
-		for (int i = 0; i < Ineffective.size(); i++){
-			Type t = new Type(Ineffective.get(i));
-			list.add(t);
+		if (!Ineffective.isEmpty()){	
+			for (int i = 0; i < Ineffective.size(); i++){
+				Type t = new Type(Ineffective.get(i));
+				list.add(t);
+			}
 		}
-		if (list.isEmpty()) { return null;}
+		else { return null;}
 		
 		return list;
 	}
@@ -113,11 +110,13 @@ public class Type extends ModelClass {
 	public ArrayList<Type> getNoEffect(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
-		for (int i = 0; i < NoEffect.size(); i++){
-			Type t = new Type(NoEffect.get(i));
-			list.add(t);
+		if (!NoEffect.isEmpty()){
+			for (int i = 0; i < NoEffect.size(); i++){
+				Type t = new Type(NoEffect.get(i));
+				list.add(t);
+			}
 		}
-		if (list.isEmpty()) { return null;}
+		else { return null;}
 		
 		return list;
 	}
@@ -129,11 +128,13 @@ public class Type extends ModelClass {
 	public ArrayList<Type> getResistance(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
-		for (int i = 0; i < Resistance.size(); i++){
-			Type t = new Type(Resistance.get(i));
-			list.add(t);
+		if (!Resistance.isEmpty()) {
+			for (int i = 0; i < Resistance.size(); i++){
+				Type t = new Type(Resistance.get(i));
+				list.add(t);
+			}
 		}
-		if (list.isEmpty()) { return null;}
+		else { return null;}
 		
 		return list;
 	}
@@ -147,11 +148,13 @@ public class Type extends ModelClass {
 	public ArrayList<Type> getSuperEffective(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
-		for (int i = 0; i < Resistance.size(); i++){
-			Type t = new Type(Resistance.get(i));
-			list.add(t);
+		if (!SuperEffective.isEmpty()) {
+			for (int i = 0; i < SuperEffective.size(); i++){
+				Type t = new Type(SuperEffective.get(i));
+				list.add(t);
+			}
 		}
-		if (list.isEmpty()) { return null;}
+		else { return null;}
 		
 		return list;
 	}
@@ -164,11 +167,13 @@ public class Type extends ModelClass {
 	public ArrayList<Type> getWeakness(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
-		for (int i = 0; i < Resistance.size(); i++){
-			Type t = new Type(Resistance.get(i));
-			list.add(t);
+		if (!Weakness.isEmpty()) {
+			for (int i = 0; i < Weakness.size(); i++){
+				Type t = new Type(Weakness.get(i));
+				list.add(t);
+			}
 		}
-		if (list.isEmpty()) { return null;}
+		else { return null;}
 		
 		return list;
 	}

@@ -9,19 +9,14 @@ import org.json.*;
 
 public abstract class ModelClass {
 	
-	public String Name, URI, Created, Modified;
-	public int ID;
+	protected String Name, URI, Created, Modified;
+	protected int ID;
 
 	
 	protected JSONObject parse(String data) {
-		long sTime = System.nanoTime();
 		JSONObject root;
 		try {
 		root = new JSONObject(data);		
-		
-		long eTime = System.nanoTime();
-		System.out.println("Parse: " + (eTime-sTime));
-		
 		return root;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -31,16 +26,12 @@ public abstract class ModelClass {
 	}
 	
 	protected String get(String urlAddress) {
-		long sTime = System.nanoTime();
 		String data = "";
 		try {
 			data = Request.Get("http://pokeapi.co/api/v1/" + urlAddress).execute().returnContent().asString();
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-		
-		long eTime = System.nanoTime();
-		System.out.println("Get: " + (eTime-sTime));
 		
 		return data;
 	}

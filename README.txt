@@ -50,7 +50,7 @@ For now this README will be used to track progress.
 			- Documentation
 			- Commenting
 			- Tester
-			- *Faster JSON - Only if feasible.
+			- *Faster JSON - Only if feasible. - Completed
 			- Change created, modified to datetime
 		
 	Add to docs:
