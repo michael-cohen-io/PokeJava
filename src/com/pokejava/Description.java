@@ -1,3 +1,4 @@
+package com.pokejava;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class Description extends ModelClass {
 			
 			//Game ArrayList defining
 			JSONArray gameNode = root.getJSONArray("games");
+			Games = new ArrayList<Integer>();
 			for (int i = 0; i < gameNode.length(); i++){
 				String gameURI = gameNode.getJSONObject(i).getString("resource_uri");
 				gameURI = gameURI.substring(13);

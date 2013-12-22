@@ -1,3 +1,4 @@
+package com.pokejava;
 /**
  * @author Michael Cohen
  *
@@ -24,6 +25,7 @@ public abstract class ModelClass {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 
@@ -46,7 +48,7 @@ public abstract class ModelClass {
 		//Disconnect
 		rd.close();
 		conn.disconnect();
-		
+
 		return sb.toString();
 	}
 	
@@ -56,4 +58,13 @@ public abstract class ModelClass {
 	public String getModified(){return Modified;}
 	
 	public int getID(){return ID;}
+	
+	public String toString(){
+		String data = this.getClass().getSimpleName() + ": " + Name + "\nID: " + ID;
+		return data;
+	}
+	
+	public void printInfo(){
+		System.out.println(toString());
+	}
 }

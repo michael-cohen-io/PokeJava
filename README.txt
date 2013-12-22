@@ -1,6 +1,6 @@
 Welcome to PokeJava, an Java Wrapper for Pokeapi!
 
-Current version: 0.5
+Current version: 0.6
 
 As of now, there is no formal documentation to explain the basics of this project. There are plans to add a documentation for this wrapper in the future.
 For now this README will be used to track progress.
@@ -38,8 +38,22 @@ For now this README will be used to track progress.
 0.5 - Added Pokedex, Description, Sprite, Game
 	TODO for 0.6 - Documentation and commenting
 	TODO:
-		- Change the ArrayList returns from being null if empty to giving the user an exception/empty ArrayList
+
 		- Implement Types and Abilities in Pokemon Class - Completed
 		- Move Name, Created, Modified, etc. to ModelClass. - Completed
 			- Move accessor methods to ModelClass as well - Completed
+			
+0.6 - All classes complete
+	TODO for 1.0 - Proper documentation and commenting. Fixing all previous problems. Faster JSON Parsing*. Tester Class
+	TODO:
+			- Change the ArrayList returns from being null if empty to giving the user an exception/empty ArrayList - Completed, need to test
+			- Documentation
+			- Commenting
+			- Tester
+			- *Faster JSON - Only if feasible.
+			- Change created, modified to datetime
 		
+	Add to docs:
+			- information about hasEvolution()
+			- EvolutionLevel
+			 - LearnType - not useful outside scope of Pokemon Object

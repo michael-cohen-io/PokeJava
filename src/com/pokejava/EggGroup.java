@@ -1,3 +1,4 @@
+package com.pokejava;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -62,12 +63,4 @@ public class EggGroup extends ModelClass {
 	}
 	
 	
-	public String toString(){
-		String data = "Egg Group: " + Name + "\nID: " + ID;
-		return data;
-	}
-	
-	public void printInfo(){
-		System.out.println(toString());
-	}
 }

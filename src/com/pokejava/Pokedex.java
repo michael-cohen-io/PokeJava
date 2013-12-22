@@ -1,3 +1,4 @@
+package com.pokejava;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -57,14 +58,5 @@ public class Pokedex extends ModelClass {
 		if (list.isEmpty()) { return null;}
 		
 		return list;
-	}
-	
-	public String toString(){
-		String data = "Pokedex: " + Name + "\nID: " + 1;
-		return data;
-	}
-	
-	public void printInfo(){
-		System.out.println(toString());
 	}
 }

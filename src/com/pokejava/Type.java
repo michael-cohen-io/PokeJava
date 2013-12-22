@@ -1,3 +1,4 @@
+package com.pokejava;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -109,6 +110,11 @@ public class Type extends ModelClass {
 		
 		return list;
 	}
+	public boolean hasIneffective(){
+		if (getIneffective() == null) return false;
+		else return true;
+	}
+	
 	public ArrayList<Type> getNoEffect(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
@@ -120,6 +126,11 @@ public class Type extends ModelClass {
 		
 		return list;
 	}
+	public boolean hasNoEffect(){
+		if (getNoEffect() == null) return false;
+		else return true;
+	}
+	
 	public ArrayList<Type> getResistance(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
@@ -131,6 +142,13 @@ public class Type extends ModelClass {
 		
 		return list;
 	}
+	public boolean hasResistance(){
+		if (getResistance() == null) return false;
+		else return true;
+	}
+	
+	
+	
 	public ArrayList<Type> getSuperEffective(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
@@ -142,6 +160,12 @@ public class Type extends ModelClass {
 		
 		return list;
 	}
+	public boolean hasSuperEffective(){
+		if (getSuperEffective() == null) return false;
+		else return true;
+	}
+	
+	
 	public ArrayList<Type> getWeakness(){
 		ArrayList<Type> list = new ArrayList<Type>();
 		
@@ -153,13 +177,11 @@ public class Type extends ModelClass {
 		
 		return list;
 	}
-	
-	public String toString(){
-		String data = "Type: " + Name + "\nID: " + ID;
-		return data;
+	public boolean hasWeakness(){
+		if (getWeakness() == null) return false;
+		else return true;
 	}
 	
-	public void printInfo(){
-		System.out.println(toString());
-	}
+	
+
 }

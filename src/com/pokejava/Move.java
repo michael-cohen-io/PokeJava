@@ -1,3 +1,4 @@
+package com.pokejava;
 import java.io.IOException;
 
 import org.json.JSONObject;
@@ -8,10 +9,10 @@ import org.json.JSONObject;
  */
 public class Move extends ModelClass {
 
-	private String Category, Description;
+	private String Category, Description, LearnType;
 	private int Power, Accuracy, PP;
 	
-	public Move(int ID){
+	public Move(int ID, String LearnType){
 		String data = "";
 		
 		try {
@@ -29,8 +30,9 @@ public class Move extends ModelClass {
 			Modified = root.getString("modified");
 			Category = root.getString("category");
 			Description = root.getString("description");
+			this.LearnType = LearnType;
 			
-			ID = root.getInt("id");
+			this.ID = root.getInt("id");
 			Power = root.getInt("power");
 			Accuracy = root.getInt("accuracy");
 			PP = root.getInt("pp");
@@ -39,20 +41,16 @@ public class Move extends ModelClass {
 		}
 	}
 	
+	public Move(int ID){
+		this(ID, "Default");
+	}
 	
 	public String getCategory(){return Category;}
 	public String getDescription(){return Description;}
+	public String getLearnType(){return LearnType;}
 	
 	public int getPower(){return Power;}
 	public int getAccuracy(){return Accuracy;}
 	public int getPP(){return PP;}
 	
-	public String toString(){
-		String data = "Move: " + Name + "\nID: " + ID;
-		return data;
-	}
-	
-	public void printInfo(){
-		System.out.println(toString());
-	}
 }

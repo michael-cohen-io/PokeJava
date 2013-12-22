@@ -1,3 +1,4 @@
+package com.pokejava;
 /**
  * @author Michael Cohen
  *
@@ -13,13 +14,14 @@ public class Pokemon extends ModelClass {
 	/* (non-Javadoc)
 	 * @see ModelClass#parse(java.lang.String)
 	 */
-	
-	//TODO: Change Created, Modified, other special types from String to specific types 
+
 	private String EVYield, GrowthRate, Height, MFRatio, Species, Weight;
 	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, SpAttack, SpDefense, Speed, Total;
+	//private int EvolvesAt;
 	private ArrayList<Integer> Abilities, Evolutions, EggGroups, Moves, Types;
 	
-	
+	//Internal property
+	private ArrayList<String> LearnTypes; //For moves class
 	
 	public Pokemon(int ID){
 		String data = "";
@@ -56,6 +58,7 @@ public class Pokemon extends ModelClass {
 			Speed =  root.getInt("speed");
 			Total =  root.getInt("total");
 			
+			
 			/*
 			 * Instead of initializing the ArrayList<Pokemon> at every Pokemon constructor, a list of IDs is initialized.
 			 * This is not so much a problem with the Pokemon class as it is in classes such as Type, which would recursively continue initializing infinite Types
@@ -82,6 +85,11 @@ public class Pokemon extends ModelClass {
 				evolutionURI = evolutionURI.substring(16);
 				evolutionURI = evolutionURI.replace("/", "");
 				
+				/*
+				if (evolutionNode.getJSONObject(i).getString("method").equals("level_up")) {EvolvesAt = evolutionNode.getJSONObject(i).getInt("level");}
+				
+				left out until level is fully implemented for all evolutions
+				*/
 				Evolutions.add(Integer.parseInt(evolutionURI));
 			}
 			if (Evolutions.isEmpty()) { Evolutions.add(null);}
@@ -101,11 +109,13 @@ public class Pokemon extends ModelClass {
 			
 			//Moves ArrayList Defining
 			Moves = new ArrayList<Integer>();
+			LearnTypes = new ArrayList<String>();
 			JSONArray moveNode = root.getJSONArray("moves");
 			for (int i = 0; i < moveNode.length(); i++) {
 				String moveURI = moveNode.getJSONObject(i).getString("resource_uri");
 				moveURI = moveURI.substring(13);
 				moveURI = moveURI.replace("/", "");
+				LearnTypes.add(moveNode.getJSONObject(i).getString("learn_type"));
 				
 				Moves.add(Integer.parseInt(moveURI));
 			}
@@ -131,7 +141,6 @@ public class Pokemon extends ModelClass {
 		
 	}
 	
-
 	public String getEVYield(){ return EVYield;}
 	public String getGrowthRate(){ return GrowthRate;}
 	public String getHeight(){ return Height;}
@@ -150,6 +159,7 @@ public class Pokemon extends ModelClass {
 	public int getSpDefense(){ return SpDefense;}
 	public int getSpeed(){ return Speed;}
 	public int getTotal(){ return Total;}
+	//public int EvolvesAt(){ return EvolvesAt;}
 	
 	public ArrayList<Ability> getAbilities(){ 
 		ArrayList<Ability> abilityList = new ArrayList<Ability>();
@@ -188,7 +198,7 @@ public class Pokemon extends ModelClass {
 		ArrayList<Move> moveList = new ArrayList<Move>();
 		
 		for (int i = 0; i < Moves.size(); i++) {
-			Move m = new Move(Moves.get(i));
+			Move m = new Move(Moves.get(i), LearnTypes.get(i));
 			moveList.add(m);
 		}
 		if (moveList.isEmpty()) { return null; }
@@ -205,15 +215,9 @@ public class Pokemon extends ModelClass {
 		if (typeList.isEmpty()) { return null; }
 		return typeList;
 	}
-	
-	
-	public String toString(){
-		String data = "Pokemon: " + Name + "\nID: " + ID;
-		return data;
-	}
-	
-	public void printInfo(){
-		System.out.println(toString());
-	}
 
+	public boolean hasEvolution(){
+		if (getEvolutions() == null) return false;
+		else return true;
+	}
 }
