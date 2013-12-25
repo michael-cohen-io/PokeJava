@@ -14,7 +14,7 @@ public class Pokemon extends ModelClass {
 	private String EVYield, GrowthRate, Height, MFRatio, Species, Weight;
 	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, SpAttack, SpDefense, Speed, Total;
 	//private int EvolvesAt;
-	private ArrayList<Integer> Abilities, Evolutions, EggGroups, Moves, Types;
+	private ArrayList<Integer> Abilities, Descriptions, Evolutions, EggGroups, Moves, Types;
 	
 	//Internal property
 	private ArrayList<String> LearnTypes; //For moves class
@@ -74,6 +74,17 @@ public class Pokemon extends ModelClass {
 					Abilities.add(Integer.parseInt(abilityURI));
 				}
 				if (Abilities.isEmpty()) { Abilities.add(null);}
+				
+				//Descriptions ArrayList Defining
+				Descriptions = new ArrayList<Integer>();
+				JSONArray descriptionNode = root.getJSONArray("descriptions");
+				for (int i = 0; i < descriptionNode.length(); i++){
+					String descriptionURI = descriptionNode.getJSONObject(i).getString("resource_uri");
+					descriptionURI = descriptionURI.substring(20);
+					descriptionURI = descriptionURI.replace("/", "");
+					
+					Descriptions.add(Integer.parseInt(descriptionURI));
+				}
 				
 				//Evolutions ArrayList Defining
 				Evolutions = new ArrayList<Integer>();
@@ -168,6 +179,19 @@ public class Pokemon extends ModelClass {
 		return abilityList;
 	}
 	
+	public ArrayList<Description> getDescriptions(){
+		ArrayList<Description> descriptionList = new ArrayList<Description>();
+		if (!Descriptions.isEmpty()){
+			for (int i = 0; i < Descriptions.size(); i++){
+				Description d = new Description(Descriptions.get(i));
+				descriptionList.add(d);
+			}
+		}
+		else {return null;}
+		return descriptionList;
+		
+	}
+	
 	public ArrayList<Pokemon> getEvolutions(){ 
 		ArrayList<Pokemon> evolutionList = new ArrayList<Pokemon>();
 		
@@ -223,6 +247,11 @@ public class Pokemon extends ModelClass {
 
 	public boolean hasEvolution(){
 		if (getEvolutions() == null) return false;
+		else return true;
+	}
+	
+	public boolean hasDescription(){
+		if (getDescriptions() == null) return false;
 		else return true;
 	}
 }

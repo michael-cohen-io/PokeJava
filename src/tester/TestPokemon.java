@@ -10,11 +10,7 @@ import com.pokejava.*;
 public class TestPokemon {
 
 	public static void main(String[] args){
-		Pokemon p = new Pokemon(7);
-		
-		Date d = p.getCreated();
-		
-		System.out.println(d.toString());
+		System.out.println(isPokemonDescription(6));
 	}
 	
 	
@@ -50,6 +46,14 @@ public class TestPokemon {
 		return true;
 	}
 	
+	private static boolean isAllPokemonDescription(){
+		for (int i=1; i <=718; i++){
+			Pokemon p = new Pokemon(i);
+			if (p.hasDescription()) {ArrayList<Description> d = p.getDescriptions();}
+		}
+		return true;
+	}
+	
 	private static boolean isAllPokemonEggGroup(){
 		for(int i=1; i <= 718; i++){
 			Pokemon p = new Pokemon(i);
@@ -77,7 +81,7 @@ public class TestPokemon {
 	
 		//CHECK ALL
 	private static boolean allPokemonCheck(){
-		if (isAllPokemonName() && isAllPokemonAbility() && isAllPokemonEggGroup() && isAllPokemonEvolutions() && isAllPokemonTypes()){
+		if (isAllPokemonName() && isAllPokemonAbility() && isAllPokemonDescription() && isAllPokemonEggGroup() && isAllPokemonEvolutions() && isAllPokemonTypes()){
 			return true;
 		}
 		else {
@@ -111,6 +115,12 @@ public class TestPokemon {
 		return true;
 	}
 	
+	private static boolean isPokemonDescription(int ID) {
+		Pokemon p = new Pokemon(ID);
+		if (p.hasDescription()) {ArrayList<Description> d = p.getDescriptions(); }
+		return true;
+	}
+	
 	private static boolean isPokemonEggGroup(int ID){
 		Pokemon p = new Pokemon(ID);
 		ArrayList<EggGroup> g = p.getEggGroup();
@@ -131,7 +141,7 @@ public class TestPokemon {
 	
 		//CHECK ALL
 	private static boolean pokemonCheck(int ID){
-		if (isPokemonName(ID) && isPokemonAbility(ID) && isPokemonEggGroup(ID) && isPokemonEvolutions(ID) && isPokemonTypes(ID)) {
+		if (isPokemonName(ID) && isPokemonAbility(ID) && isPokemonDescription(ID) && isPokemonEggGroup(ID) && isPokemonEvolutions(ID) && isPokemonTypes(ID)) {
 			return true;
 		} else {
 			return false;

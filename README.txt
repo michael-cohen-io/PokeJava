@@ -51,7 +51,10 @@ For now this README will be used to track progress.
 			- Commenting
 			- Tester
 			- *Faster JSON - Only if feasible. - Completed
-			- Change created, modified to datetime
+			- Change created, modified to datetime - Completed
+			- Add description ArrayList to Pokemon Class - Completed
+			- Add level to Move class
+			- add boolean hasX() to all ArrayList properties in all classes, adjust Tester classes as needed
 		
 	Add to docs:
 			- information about hasEvolution()
