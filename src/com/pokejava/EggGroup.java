@@ -59,5 +59,10 @@ public class EggGroup extends ModelClass {
 		return pokemonList;
 	}
 	
+	public boolean hasPokemon(){
+		if (Pokemon.isEmpty()) return false;
+		else return true;
+	}
+	
 	
 }

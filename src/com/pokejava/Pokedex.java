@@ -58,7 +58,7 @@ public class Pokedex extends ModelClass {
 	}
 	
 	public boolean hasPokemon(){
-		if (!Pokemons.isEmpty()) return true;
-		else return false;
+		if (Pokemons.isEmpty()) return false;
+		else return true;
 	}
 }

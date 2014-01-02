@@ -13,9 +13,8 @@ public class Pokemon extends ModelClass {
 
 	private String EVYield, GrowthRate, Height, MFRatio, Species, Weight;
 	private int Attack, CatchRate, Defense, EggCycles, Exp, Happiness, HP, SpAttack, SpDefense, Speed, Total;
-	//private int EvolvesAt;
 	private ArrayList<Integer> Abilities, Descriptions, Evolutions, EggGroups, Moves, Types;
-	
+	//private int EvolvesAt;
 	//Internal property
 	private ArrayList<String> LearnTypes; //For moves class
 	
@@ -93,11 +92,9 @@ public class Pokemon extends ModelClass {
 					String evolutionURI = evolutionNode.getJSONObject(i).getString("resource_uri");
 					evolutionURI = evolutionURI.substring(16);
 					evolutionURI = evolutionURI.replace("/", "");
-					
 					/*
 					if (evolutionNode.getJSONObject(i).getString("method").equals("level_up")) {EvolvesAt = evolutionNode.getJSONObject(i).getInt("level");}
-					
-					left out until level is fully implemented for all evolutions
+					still not fully implemented
 					*/
 					Evolutions.add(Integer.parseInt(evolutionURI));
 				}
@@ -158,6 +155,7 @@ public class Pokemon extends ModelClass {
 	public int getCatchRate(){ return CatchRate;}
 	public int getDefense(){ return Defense;}
 	public int getEggCycle(){ return EggCycles;}
+	//public int getEvolvesAt(){ return EvolvesAt;}
 	public int getExp(){ return Exp;}
 	public int getHappiness(){ return Happiness;}
 	public int getHP(){ return HP;}
@@ -165,7 +163,7 @@ public class Pokemon extends ModelClass {
 	public int getSpDefense(){ return SpDefense;}
 	public int getSpeed(){ return Speed;}
 	public int getTotal(){ return Total;}
-	//public int EvolvesAt(){ return EvolvesAt;}
+	
 	
 	public ArrayList<Ability> getAbilities(){ 
 		ArrayList<Ability> abilityList = new ArrayList<Ability>();
@@ -244,14 +242,35 @@ public class Pokemon extends ModelClass {
 		
 		return typeList;
 	}
-
-	public boolean hasEvolution(){
-		if (getEvolutions() == null) return false;
+	
+	public boolean hasAbility(){
+		if (Abilities.isEmpty()) return false;
 		else return true;
 	}
 	
 	public boolean hasDescription(){
-		if (getDescriptions() == null) return false;
+		if (Descriptions.isEmpty()) return false;
 		else return true;
 	}
+	
+	public boolean hasEvolution(){
+		if (Evolutions.isEmpty()) return false;
+		else return true;
+	}
+	
+	public boolean hasEggGroup(){
+		if (EggGroups.isEmpty()) return false;
+		else return true;
+	}
+	
+	public boolean hasMove(){
+		if (Moves.isEmpty()) return false;
+		else return true;
+	}
+	
+	public boolean hasType(){
+		if (Types.isEmpty()) return false;
+		else return true;
+	}
+	
 }

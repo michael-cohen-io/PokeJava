@@ -10,7 +10,7 @@ import com.pokejava.*;
 public class TestPokemon {
 
 	public static void main(String[] args){
-		System.out.println(isPokemonDescription(6));
+		System.out.println(isAllPokemonBasics());
 	}
 	
 	
@@ -90,6 +90,38 @@ public class TestPokemon {
 	}
 
 	
+	private static boolean isAllPokemonBasics(){
+		for (int id=1; id <=718; id++) {
+			Pokemon p = new Pokemon(id);
+			String n = p.getEVYield();
+			n = p.getGrowthRate();
+			n = p.getHeight();
+			n = p.getMFRatio();
+			n = p.getSpecies();
+			n = p.getURI();
+			n = p.getWeight();
+			
+			int i = p.getAttack();
+			i = p.getCatchRate();
+			i = p.getDefense();
+			i = p.getEggCycle();
+			//i = p.getEvolvesAt();
+			i = p.getExp();
+			i = p.getHappiness();
+			i = p.getHP();
+			i = p.getID();
+			i = p.getSpAttack();
+			i = p.getSpDefense();
+			i = p.getSpeed();
+			i = p.getTotal();
+			
+			Date d = p.getCreated();
+			d = p.getModified();
+		
+		}
+		return true;
+	}
+	
 	
 	// ** QUICK TESTS **
 	
@@ -164,6 +196,7 @@ public class TestPokemon {
 		i = p.getCatchRate();
 		i = p.getDefense();
 		i = p.getEggCycle();
+		//i = p.getEvolvesAt();
 		i = p.getExp();
 		i = p.getHappiness();
 		i = p.getHP();

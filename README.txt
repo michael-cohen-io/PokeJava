@@ -1,6 +1,6 @@
 Welcome to PokeJava, an Java Wrapper for Pokeapi!
 
-Current version: 0.6
+Current version: 0.7
 
 As of now, there is no formal documentation to explain the basics of this project. There are plans to add a documentation for this wrapper in the future.
 For now this README will be used to track progress.
@@ -47,16 +47,23 @@ For now this README will be used to track progress.
 	TODO for 1.0 - Proper documentation and commenting. Fixing all previous problems. Faster JSON Parsing*. Tester Class
 	TODO:
 			- Change the ArrayList returns from being null if empty to giving the user an exception/empty ArrayList - Completed, need to test
-			- Documentation
-			- Commenting
-			- Tester
 			- *Faster JSON - Only if feasible. - Completed
 			- Change created, modified to datetime - Completed
 			- Add description ArrayList to Pokemon Class - Completed
-			- Add level to Move class
-			- add boolean hasX() to all ArrayList properties in all classes, adjust Tester classes as needed
+			- add boolean hasX() to all ArrayList properties in all classes, adjust Tester classes as needed - Completed
 		
-	Add to docs:
+
+			 
+0.7 - Various minor improvements and fixes
+	TODO for 1.0 - Proper documentation and commenting. Fixing all previous problems. Faster JSON Parsing*. Tester Class
+	TODO:
+			- Documentation
+			- Commenting
+			- Tester
+			- Add level to Move class
+		Add to docs:
 			- information about hasEvolution()
 			- EvolutionLevel
-			 - LearnType - not useful outside scope of Pokemon Object
+			- LearnType - not useful outside scope of Pokemon Object		
+			
+			

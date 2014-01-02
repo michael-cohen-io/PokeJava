@@ -105,7 +105,7 @@ public class Type extends ModelClass {
 		return list;
 	}
 	public boolean hasIneffective(){
-		if (getIneffective() == null) return false;
+		if (Ineffective.isEmpty()) return false;
 		else return true;
 	}
 	
@@ -123,7 +123,7 @@ public class Type extends ModelClass {
 		return list;
 	}
 	public boolean hasNoEffect(){
-		if (getNoEffect() == null) return false;
+		if (NoEffect.isEmpty()) return false;
 		else return true;
 	}
 	
@@ -141,7 +141,7 @@ public class Type extends ModelClass {
 		return list;
 	}
 	public boolean hasResistance(){
-		if (getResistance() == null) return false;
+		if (Resistance.isEmpty()) return false;
 		else return true;
 	}
 	
@@ -161,7 +161,7 @@ public class Type extends ModelClass {
 		return list;
 	}
 	public boolean hasSuperEffective(){
-		if (getSuperEffective() == null) return false;
+		if (SuperEffective.isEmpty()) return false;
 		else return true;
 	}
 	
@@ -180,7 +180,7 @@ public class Type extends ModelClass {
 		return list;
 	}
 	public boolean hasWeakness(){
-		if (getWeakness() == null) return false;
+		if (Weakness.isEmpty()) return false;
 		else return true;
 	}
 	

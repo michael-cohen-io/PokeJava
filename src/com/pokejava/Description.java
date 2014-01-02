@@ -67,8 +67,8 @@ public class Description extends ModelClass {
 	}
 	
 	public boolean hasGames(){
-		if (!Games.isEmpty()) return true;
-		else return false;
+		if (Games.isEmpty()) return false;
+		else return true;
 	}
 	
 }
