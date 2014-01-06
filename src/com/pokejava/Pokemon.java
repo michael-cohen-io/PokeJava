@@ -94,6 +94,7 @@ public class Pokemon extends ModelClass {
 					evolutionURI = evolutionURI.replace("/", "");
 					/*
 					if (evolutionNode.getJSONObject(i).getString("method").equals("level_up")) {EvolvesAt = evolutionNode.getJSONObject(i).getInt("level");}
+					else EvolvesAt = 0;
 					still not fully implemented
 					*/
 					Evolutions.add(Integer.parseInt(evolutionURI));

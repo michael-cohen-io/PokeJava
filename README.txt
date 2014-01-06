@@ -61,6 +61,9 @@ For now this README will be used to track progress.
 			- Commenting
 			- Tester
 			- Add level to Move class
+				-Possibly make Move ArrayList in Pokemon class a multidimensional ArrayList<Integer>
+				-Possibly make Move a second constructor - CHOSEN, COMPLETED, ADD Description to docs
+				
 		Add to docs:
 			- information about hasEvolution()
 			- EvolutionLevel
