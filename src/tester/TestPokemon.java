@@ -10,6 +10,7 @@ import com.pokejava.*;
 public class TestPokemon {
 
 	public static void main(String[] args){
+		System.out.println("Yo");
 		System.out.println(isAllPokemonBasics());
 	}
 	
@@ -105,7 +106,7 @@ public class TestPokemon {
 			i = p.getCatchRate();
 			i = p.getDefense();
 			i = p.getEggCycle();
-			//i = p.getEvolvesAt();
+			i = p.getEvolvesAt();
 			i = p.getExp();
 			i = p.getHappiness();
 			i = p.getHP();
@@ -117,6 +118,7 @@ public class TestPokemon {
 			
 			Date d = p.getCreated();
 			d = p.getModified();
+			System.out.println(p.toString());
 		
 		}
 		return true;
@@ -196,7 +198,7 @@ public class TestPokemon {
 		i = p.getCatchRate();
 		i = p.getDefense();
 		i = p.getEggCycle();
-		//i = p.getEvolvesAt();
+		i = p.getEvolvesAt();
 		i = p.getExp();
 		i = p.getHappiness();
 		i = p.getHP();

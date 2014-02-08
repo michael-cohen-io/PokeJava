@@ -11,6 +11,10 @@ import org.json.*;
 
 
 
+/**
+ * @author root
+ *
+ */
 public abstract class ModelClass {
 	
 	protected String Name, URI;
@@ -18,6 +22,7 @@ public abstract class ModelClass {
 	protected Date Created, Modified;
 	
 	
+
 	protected JSONObject parse(String data) {
 		JSONObject root;
 		try {
@@ -41,11 +46,33 @@ public abstract class ModelClass {
 		return data;
 	}
 	
+	/**
+	 * @return String Name: Name representation of object
+	 */
 	public String getName(){ return Name;}
+	
+	
+	/**
+	 * @return String URI: URI to the specific Object
+	 */
 	public String getURI(){ return URI;}
+	
+	
+	/**
+	 * @return Date Modified: A date object representing the last time said API was updated
+	 */
 	public Date getModified(){return Modified;}
+	
+	
+	/**
+	 * @return Date Created: A date object representing the API's creation
+	 */
 	public Date getCreated(){ return Created;}
 	
+	
+	/**
+	 * @return int ID: ID number of the object within the pokeapi database
+	 */
 	public int getID(){return ID;}
 	
 	public String toString(){
@@ -53,6 +80,9 @@ public abstract class ModelClass {
 		return data;
 	}
 	
+	/**
+	 * Prints the toString() of the object to the console
+	 */
 	public void printInfo(){
 		System.out.println(toString());
 	}
