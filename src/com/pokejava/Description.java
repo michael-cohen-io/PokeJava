@@ -13,6 +13,7 @@ public class Description extends ModelClass {
 	
 	private ArrayList<Integer> Games;
 	private Pokemon pokemon;
+	private String description;
 	
 	public Description(int ID){
 		String data = "";
@@ -23,6 +24,8 @@ public class Description extends ModelClass {
 		try {
 			Name = root.getString("name");
 			URI = root.getString("resource_uri");
+			//gets the description
+			description = root.getString("description");
 			
 			this.ID = root.getInt("id");
 			
@@ -69,6 +72,14 @@ public class Description extends ModelClass {
 	public boolean hasGames(){
 		if (Games.isEmpty()) return false;
 		else return true;
+	}
+	
+	/**
+	 * gets the description
+	 * @return a description
+	 */
+	public String getDescription(){
+		return this.description;
 	}
 	
 }
