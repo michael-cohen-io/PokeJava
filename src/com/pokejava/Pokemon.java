@@ -340,6 +340,13 @@ public class Pokemon extends ModelClass {
 	}
 	
 	/**
+	 * @return a list of Ids of descriptions
+	 */
+	public ArrayList<Integer> getDescriptionsID(){
+		return Descriptions;
+	}
+	
+	/**
 	 * @return ArrayList<Pokemon> EvolutionsList: An ArrayList of all Pokemon that this Pokemon can evolve to
 	 */
 	public ArrayList<Pokemon> getEvolutions(){ 
